@@ -22,7 +22,7 @@ char	*first_call(char *line, char *stat)
 
 	i = find_n(line);
 	tmp = ft_strdup(line);
-	line[i] = 0;
+	line[i + 1] = '\0'; // SOUCIS ICI
 	i++;
 	j = 0;
 	while (tmp[i])
@@ -85,10 +85,12 @@ char	*read_me_please(int fd, char *buff, char *line, char *stat)
 		buff[ret] = '\0';
 		line = ft_strjoin(line, buff);
 	}
-	if (ret == 0)
+	if (ret == 0 && ft_strlen(stat) != 0)
 		line = ft_last_line(line, stat);
 	else if (find_n(line) != -1)
 		line = first_call(line, stat);
+	else if (ft_strlen(line) == 0)
+		line = NULL;
 	return (line);
 }
 
@@ -101,7 +103,7 @@ char	*get_next_line(int fd)
 	if (read(fd, buff, 0) == -1 || BUFFER_SIZE < 1 )
 		return (NULL);
 	line = ft_strdup("");
-	if (stat[0] != 0)
+	if (stat[0])
 	{
 		if (find_n(stat) != -1)
 		{
@@ -109,7 +111,7 @@ char	*get_next_line(int fd)
 			return (line);
 		}
 		line = ft_strjoin(line, stat);
-		stat[0] = 0;
+		stat[0] = '\0';
 	}
 	line = read_me_please(fd, buff, line, stat);
 	return (line);

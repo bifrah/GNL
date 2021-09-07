@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-int main()
+int main(int argc, char **argv)
 {
 	int		fd;
 	char	*line;
@@ -13,7 +13,7 @@ int main()
 
 	i = 1;
 	fd = open("toto", O_RDONLY);
-	while ((line = get_next_line(fd)) != NULL && i < 20)
+	while ((line = get_next_line(fd)) != NULL)
     {
         printf("\nLigne %d --> %s\n", i, line);
         free(line);

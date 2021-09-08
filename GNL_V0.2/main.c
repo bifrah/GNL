@@ -5,17 +5,17 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-int main(int argc, char **argv)
+int main()
 {
 	int		fd;
 	char	*line;
 	int		i;
 
 	i = 1;
-	fd = open("toto", O_RDONLY);
+	fd = open("multiple_nlx5", O_RDONLY);
 	while ((line = get_next_line(fd)) != NULL)
     {
-        printf("\nLigne %d --> %s\n", i, line);
+        printf("Ligne %d --> %s\n", i, line);
         free(line);
         i++;
     }

@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 02:28:57 by bifrah            #+#    #+#             */
-/*   Updated: 2021/08/26 13:44:07 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/09/08 16:27:37 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ char	*stat_with_n(char *line, char *stat)
 
 	j = 0;
 	line = ft_strjoin(line, stat);
+	//printf("On a > %s", line);
 	i = find_n(line);
 	tmp = ft_strdup(stat);
-	line[i++] = 0;
+	i++;
+	line[i++] = '\0';
+	i--;
 	while (tmp[i])
 		stat[j++] = tmp[i++];
 	stat[j] = '\0';
@@ -57,7 +60,7 @@ char	*ft_last_line(char *line, char *stat)
 	sinon on est a la fin du fichier donc on dois afficher line et verifier stat que c'est pas vide*/
 	if (line == NULL)
 	{
-		stat[0] = 0;
+		stat[0] = '\0';
 		return (NULL);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 02:28:57 by bifrah            #+#    #+#             */
-/*   Updated: 2021/09/08 16:27:37 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/09/08 16:40:51 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*first_call(char *line, char *stat)
 
 	i = find_n(line);
 	tmp = ft_strdup(line);
-	line[i + 1] = '\0'; // SOUCIS ICI
+	line[i + 1] = '\0';
 	i++;
 	j = 0;
 	while (tmp[i])
@@ -40,7 +40,6 @@ char	*stat_with_n(char *line, char *stat)
 
 	j = 0;
 	line = ft_strjoin(line, stat);
-	//printf("On a > %s", line);
 	i = find_n(line);
 	tmp = ft_strdup(stat);
 	i++;
@@ -55,9 +54,6 @@ char	*stat_with_n(char *line, char *stat)
 
 char	*ft_last_line(char *line, char *stat)
 {
-	/*euh...alors ici on doit si ret == 0 on a 2 cas
-	soit on vient de lire et on a rien lu donc on doit return null
-	sinon on est a la fin du fichier donc on dois afficher line et verifier stat que c'est pas vide*/
 	if (line == NULL)
 	{
 		stat[0] = '\0';

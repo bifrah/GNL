@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 02:28:52 by bifrah            #+#    #+#             */
-/*   Updated: 2021/09/08 16:40:39 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/09/08 16:52:01 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int					find_n(const char *s);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strjoin(char *s1, char const *s2);
 char				*ft_strdup(const char *src);
-char				*first_call(char *line, char *stat);
+char				*first_call(char **line, char *stat);
 char				*stat_with_n(char *line, char *stat);
 char				*ft_last_line(char *line, char *stat);
 char				*read_me_please(int fd, char *buff, char *line, char *stat);

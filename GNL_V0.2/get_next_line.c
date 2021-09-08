@@ -6,7 +6,7 @@
 /*   By: bifrah <bifrah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 02:28:57 by bifrah            #+#    #+#             */
-/*   Updated: 2021/09/08 16:40:51 by bifrah           ###   ########.fr       */
+/*   Updated: 2021/09/08 16:51:49 by bifrah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char	*first_call(char *line, char *stat)
+char	*first_call(char **line, char *stat)
 {
 	unsigned int	j;
 	int				i;
 	char			*tmp;
 
-	i = find_n(line);
-	tmp = ft_strdup(line);
-	line[i + 1] = '\0';
+	i = find_n(*line);
+	tmp = ft_strdup(*line);
+	line[0][i + 1] = '\0';
 	i++;
 	j = 0;
 	while (tmp[i])
 		stat[j++] = tmp[i++];
 	stat[j] = '\0';
 	free(tmp);
-	return (line);
+	return (*line);
 }
 
 char	*stat_with_n(char *line, char *stat)
@@ -65,7 +65,7 @@ char	*ft_last_line(char *line, char *stat)
 			return (line);
 		else
 		{
-			stat[0] = 0;
+			stat[0] = '\0';
 			line[find_n(line)] = '\0';
 			return (line);
 		}
@@ -87,7 +87,7 @@ char	*read_me_please(int fd, char *buff, char *line, char *stat)
 	if (ret == 0 && ft_strlen(stat) != 0)
 		line = ft_last_line(line, stat);
 	else if (find_n(line) != -1)
-		line = first_call(line, stat);
+		line = first_call(&line, stat);
 	else if (ft_strlen(line) == 0)
 		line = NULL;
 	return (line);
